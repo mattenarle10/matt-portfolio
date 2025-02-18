@@ -24,6 +24,7 @@ const projectData: Project[] = [
     date: "January 2025 - Ongoing",
     description: "Developed a Flutter-based mobile app for school health emergencies with Firebase Authentication and Firestore for Real-time Database, equipped with Google Maps API for location tracking.",
     image: "/imgs/Projects_SHEA_A.png",
+    github: "https://github.com/mattenarle10/SHEA-A",
   
   },
   {
