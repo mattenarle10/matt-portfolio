@@ -1,86 +1,137 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaRunning, FaLink, FaArrowRight } from "react-icons/fa"; // Icons for marathon, link, LinkedIn, and email
+import { motion } from "framer-motion";
+
 
 const AboutMe = () => {
-  return (
-    <section className="bg-white py-16">
-      <div className="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* Left side (Image) */}
-        <div className="flex justify-center items-center animate__animated animate__fadeIn animate__delay-1s">
-          <div className="w-72 h-72 md:w-96 md:h-96 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-500">
-            <Image
-              src="/imgs/me.jpg" // Your image path here
-              alt="Matthew Ariel A. Enarle"
-              width={384}
-              height={384}
-              className="w-full h-full object-cover"
-            />
-          </div>
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Ensure animations only run client-side
+  }, []);
+
+  // If not client-side yet, return a placeholder to prevent hydration errors
+  if (!isClient) {
+    return (
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-screen-xl mx-auto px-6">
+          <h2 className="text-4xl font-extrabold text-indigo-800 mb-6">About Me</h2>
         </div>
+      </section>
+    );
+  }
 
-        {/* Right side (Text) */}
-        <div className="text-gray-800">
-          <h2 className="text-4xl font-extrabold text-indigo-800 mb-6 animate__animated animate__fadeIn animate__delay-1s">About Me</h2>
-          <p className="text-sm mb-4 animate__animated animate__fadeIn animate__delay-2s">
-            Hi! I’m Matthew Ariel A. Enarle, a Computer Science student specializing in Artificial Intelligence at West Visayas State University. With a deep passion for software development, mobile development, and machine learning, I aim to innovate and solve real-world problems.
-          </p>
+  return (
+    <section id="about" className="py-16 sm:py-20 bg-white">
+      <div className="max-w-screen-xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="text-4xl font-extrabold text-indigo-800 mb-6">About Me </h2>
+          <div className="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+        </motion.div>
 
-          <div className="space-y-6">
-            {/* Skills */}
-            <div className="animate__animated animate__fadeIn animate__delay-3s">
-              <p className="text-sm">
-                <span className="mr-2">💻</span> Proficient in <strong>Java, Dart, Python, JavaScript</strong> and experienced with frameworks like <strong>NodeJS, NextJS, Flutter, MySQL, TensorFlow</strong>. My focus is on <strong>Software Development, Mobile Development,</strong> and <strong>AI</strong>.
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+          {/* Left side (Image) */}
+          <motion.div 
+            className="flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="relative w-full max-w-sm md:max-w-md shadow-lg overflow-hidden group border-4 border-white rounded-xl">
+              <Image
+                src="/imgs/me.jpg"
+                alt="Matthew Ariel A. Enarle"
+                width={400}
+                height={400}
+                className="w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
+          </motion.div>
 
-            {/* Experience */}
-            <div className="animate__animated animate__fadeIn animate__delay-4s">
-              <p className="text-sm">
-                <span className="mr-2">👨‍💻</span> As a <strong>Research Programmer</strong> since May 2024, I’ve been consulting on research projects at Sagay National High School. Additionally, as a <strong>Freelance Developer</strong> since October 2022, I’ve worked on web and mobile applications, including IoT solutions for various clients.
+          {/* Right side (Text) */}
+          <motion.div 
+            className="text-gray-800 space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+            >
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                <span className="text-2xl mr-2">👋</span> Hi! I&apos;m <span className="font-semibold text-indigo-800">Matthew Ariel A. Enarle</span>, a Computer Science student specializing in Artificial Intelligence at West Visayas State University. With a deep passion for software development, mobile development, and machine learning, I aim to innovate and solve real-world problems.
               </p>
-            </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3 flex-shrink-0 mt-1">👨‍💻</span>
+                  <p className="text-gray-700">
+                    Proficient in <span className="font-semibold">Java, Dart, Python, JavaScript</span> and experienced with frameworks like <span className="font-semibold">NodeJS, NextJS, Flutter, MySQL, TensorFlow</span>. My focus is on <span className="font-semibold">Software Development, Mobile Development,</span> and <span className="font-semibold">AI</span>.
+                  </p>
+                </div>
+                
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3 flex-shrink-0 mt-1">💼</span>
+                  <p className="text-gray-700">
+                    As a <span className="font-semibold">Research Programmer</span> since May 2024, I&apos;ve been consulting on research projects at Sagay National High School. Additionally, as a <span className="font-semibold">Freelance Developer</span> since October 2022, I&apos;ve worked on web and mobile applications, including IoT solutions for various clients.
+                  </p>
+                </div>
+                
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3 flex-shrink-0 mt-1">🎓</span>
+                  <p className="text-gray-700">
+                    I&apos;m pursuing a <span className="font-semibold">BS in Computer Science</span> (AI major) at West Visayas State University with a projected GWA of <span className="font-semibold">1.33</span>. I graduated from <span className="font-semibold">Liceo de Lasalle</span> with High Honors in 2020.
+                  </p>
+                </div>
+                
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3 flex-shrink-0 mt-1">🏃‍♂️</span>
+                  <div className="text-gray-700">
+                    <p>Completed 3 marathons by age 21. Check out my progress on</p>
+                    <a
+                      href="https://www.strava.com/athletes/mattenarle"
+                      className="inline-flex items-center text-indigo-600 hover:text-indigo-800 mt-1 font-medium"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="mr-1">🔗</span> Strava
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-            {/* Education */}
-            <div className="animate__animated animate__fadeIn animate__delay-5s">
-              <p className="text-sm">
-                <span className="mr-2">🎓</span> I’m pursuing a <strong>BS in Computer Science</strong> (AI major) at West Visayas State University with a projected GWA of <strong>1.33</strong>. I graduated from <strong>Liceo de Lasalle</strong> with High Honors in 2020.
-              </p>
-            </div>
-
-        {/* Achievements */}
-<div className="animate__animated animate__fadeIn animate__delay-6s">
-  <div className="flex items-center space-x-2">
-    <FaRunning className="text-indigo-600" />
-    <p className="text-sm">
-      <span className="mr-2">🏅</span> Completed 3 marathons by age 21. Check out my progress on 
-      <a
-        href="https://www.strava.com/athletes/mattenarle"
-        className="text-indigo-600 flex items-center"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaLink className="mr-1" /> Strava
-      </a>.
-    </p>
-  </div>
-</div>
-
-
-          
-           {/* Call to Action */}
-<div className="mt-6 flex justify-end">
-  <a
-    href="/about"
-    className="inline-block border-2 border-indigo-600 text-indigo-600 py-3 px-8 rounded-lg text-sm font-semibold hover:bg-indigo-600 hover:text-white transition-all duration-300 flex items-center space-x-2"
-  >
-    <span>More About Me</span>
-    <FaArrowRight className="text-lg" />
-  </a>
-</div>
-
-          </div>
+            {/* Call to Action */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 flex justify-center md:justify-end"
+            >
+              <a
+                href="/about"
+                className="inline-flex items-center gap-2 bg-indigo-600 text-white py-3 px-8 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg group"
+              >
+                <span>More About Me</span>
+                <span className="text-lg group-hover:translate-x-1 transition-transform">👉</span>
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

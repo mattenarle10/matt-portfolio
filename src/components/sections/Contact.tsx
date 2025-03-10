@@ -6,13 +6,13 @@ const Contact = () => {
  
 
   return (
-    <section className="relative bg-white py-24 overflow-hidden">
+    <section className="relative bg-white py-16 overflow-hidden">
       {/* Animated Background */}
       <canvas id="particles-canvas" className="absolute inset-0 z-0"></canvas>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 text-center text-gray-800">
-        <p className="text-3xl md:text-5xl font-extrabold text-indigo-800 mb-6 animate__animated animate__fadeIn animate__delay-2s">
+        <p className="text-3xl md:text-5xl font-extrabold text-indigo-800 mb-4 animate__animated animate__fadeIn animate__delay-2s">
           Let’s Work Together!
         </p>
         <p className="text-lg md:text-xl mb-8 animate__animated animate__fadeIn animate__delay-3s">

@@ -6,83 +6,80 @@ import { motion } from "framer-motion";
 import { FaDownload, FaLinkedin } from "react-icons/fa";
 
 const HelloSection = () => {
-  const [isClient, setIsClient] = useState(false);
+  // Use state to control visibility rather than conditional rendering
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Ensure animations and dynamic content only run on the client
+    // Set a small delay to ensure CSS is fully loaded
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 150);
+    
+    // Add a class to the body to prevent flashing of other sections
+    document.body.classList.add('hello-section-loading');
+    
+    return () => {
+      clearTimeout(timer);
+      document.body.classList.remove('hello-section-loading');
+    };
   }, []);
-
-  if (!isClient) {
-    return null; // Prevent rendering until client-side hydration
-  }
 
   return (
     <motion.section
-      className="flex justify-center items-center mt-0 bg-white py-8 sm:py-16 relative overflow-hidden"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      className="flex justify-center items-center mt-8 sm:mt-12 md:mt-16 bg-white pt-12 pb-16 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isLoaded ? 1 : 0 }}
+      transition={{ duration: 0.6 }}
     >
-      {/* Animated background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-      
-        <div className="absolute top-0 left-0 w-full h-fullopacity-0">
-          <motion.div
-            className="absolute w-16 h-16 rounded-full bg-yellow-300 opacity-60"
-            animate={{
-              x: [100, 400, 700, 100],
-              y: [50, 200, 300, 50],
-              opacity: [0.5, 0.8, 1, 0.5],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute w-12 h-12 rounded-full bg-yellow-300 opacity-60"
-            animate={{
-              x: [300, 500, 600, 300],
-              y: [50, 150, 350, 50],
-              opacity: [0.5, 0.9, 0.8, 0.5],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          />
-        </div>
-      </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-screen-xl mx-auto px-4 space-y-8 sm:space-y-0 sm:space-x-8 relative z-10">
+      <div className="flex flex-col justify-center w-full max-w-screen-xl mx-auto px-4 relative z-10">
         {/* Left Section */}
         <motion.div
-          className="text-section max-w-xl"
-          initial={{ opacity: 0, x: -100 }}
+          className="text-section max-w-xl mt-8 sm:mt-0"
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <p className="text-lg text-gray-600 mb-2">Hello there, I am</p>
-          <h1 className="text-5xl sm:text-8xl font-extrabold text-indigo-800 mb-4 flex items-center gap-2">
+          <motion.p 
+            className="text-lg text-gray-600 mb-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            Hello there! 👋, I am
+          </motion.p>
+          <motion.h1 
+            className="text-6xl sm:text-7xl font-extrabold text-indigo-800 mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             Matthew Enarle
-          </h1>
-          <p className="text-base sm:text-xl text-gray-800 mb-6">
-            An athlete, software engineer from the Philippines who&apos;s trying to balance everything in life.
-            <span className="text-4xl">🏃‍♂️💻</span>
-          </p>
+          </motion.h1>
+          <motion.p 
+            className="text-base sm:text-xl text-gray-800 mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            An athlete, software engineer from the Philippines who&apos;s trying
+            to balance everything in life.
+            <span className="text-3xl ml-2">🏃‍♂️💻</span>
+          </motion.p>
 
           {/* Buttons */}
-          <div className="flex gap-4">
+          <motion.div 
+            className="flex flex-wrap gap-6 mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
             {/* Resume Button */}
             <a
               href="/MatthewEnarle-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center bg-indigo-800 text-white px-6 py-2 rounded-full shadow-lg hover:bg-indigo-700 transition-all"
+              className="flex items-center justify-center bg-indigo-800 text-white px-8 py-3 rounded-full shadow-xl hover:bg-indigo-700 hover:shadow-indigo-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-lg"
             >
               <FaDownload className="mr-2" />
               View Resume
@@ -93,30 +90,43 @@ const HelloSection = () => {
               href="https://www.linkedin.com/in/matthew-enarle/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-blue-500 transition-all"
+              className="flex items-center justify-center bg-blue-600 text-white px-8 py-3 rounded-full shadow-xl hover:bg-blue-500 hover:shadow-blue-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-lg"
             >
               <FaLinkedin className="mr-2" />
               LinkedIn Profile
             </a>
-          </div>
+          </motion.div>
         </motion.div>
 
-        {/* Right Section */}
+        {/* Right Section - with refined image container design */}
         <motion.div
-          className="image-section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          className="image-section absolute right-16 sm:right-16 md:right-24 lg:right-32 top-1 transform -translate-y-1/2"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <div className="image-container w-80 h-80 flex justify-center items-center bg-gradient-to-br from-transparent to-[#9cd1f7] rounded-full shadow-lg overflow-hidden">
-            <Image
-              src="/imgs/Matt.png"
-              alt="Matthew Enarle"
-              width={300}
-              height={300}
-              className="object-cover"
-              priority
-            />
+          <div className="relative w-72 h-72 sm:w-72 sm:h-72">
+            {/* Subtle shadow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-blue-400 rounded-full shadow-xl opacity-60 blur-sm transform -translate-x-1 translate-y-1"></div>
+            
+            {/* Main image container with border */}
+            <div className="relative w-full h-full bg-gradient-to-br from-white via-indigo-50 to-[#9cd1f7] rounded-full shadow-lg border-2 border-white overflow-hidden flex justify-center items-center">
+              <motion.div
+                initial={{ scale: 1.05 }}
+                animate={{ scale: isLoaded ? 1 : 1.05 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="w-full h-full relative overflow-hidden"
+              >
+                <Image
+                  src="/imgs/Matt.png"
+                  alt="Matthew Enarle"
+                  width={280}
+                  height={280}
+                  className="object-cover object-center"
+                  priority
+                />
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

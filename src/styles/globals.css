@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Anti-flash animation for specific elements only */
+.hello-section-loading .flash-sensitive {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Apply smooth transitions only to elements that need it */
+.flash-sensitive {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Ensure content is visible after hello section loads */
+body:not(.hello-section-loading) .flash-sensitive {
+  opacity: 1;
+}

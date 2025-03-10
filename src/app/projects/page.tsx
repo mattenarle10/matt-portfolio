@@ -82,42 +82,117 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-4 pt-24 pb-16">
       <motion.h1
-        className="text-4xl font-bold text-indigo-700 mb-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        className="text-3xl font-bold text-indigo-700 mb-6 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         Projects
       </motion.h1>
+      
+      <motion.div 
+        className="mb-8 max-w-2xl mx-auto text-center text-neutral-600 text-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        Explore my recent work and projects. Each project represents a unique challenge and solution.
+      </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div 
+        className="space-y-4"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1
+            }
+          }
+        }}
+        initial="hidden"
+        animate="show"
+      >
         {projects.map((project, index) => (
           <motion.div
             key={index}
             onClick={() => router.push(`/projects/${project.slug}`)}
-            className="relative flex flex-col items-center p-4 bg-neutral-100 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105 hover:shadow-[0_0_20px_rgba(99,102,241,0.7)] group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
+            className="relative flex flex-col md:flex-row items-center p-4 bg-white rounded-lg shadow-md cursor-pointer border border-neutral-200 group overflow-hidden hover:border-indigo-300"
+            variants={{
+              hidden: { opacity: 0, x: -20 },
+              show: { opacity: 1, x: 0 }
+            }}
+            whileHover={{ 
+              scale: 1.02, 
+              boxShadow: '0 10px 25px -5px rgba(99, 102, 241, 0.1), 0 8px 10px -6px rgba(99, 102, 241, 0.1)' 
+            }}
+            whileTap={{ scale: 0.98 }}
           >
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 blur-lg opacity-0 group-hover:opacity-50 transition-opacity"></div>
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={200}
-              height={200}
-              className="rounded-lg mb-4 z-10 object-cover"
-            />
-            <div className="z-10 text-center">
-              <h2 className="text-lg font-semibold text-indigo-600">{project.title}</h2>
-              <p className="text-sm text-neutral-500">{project.date}</p>
-              <p className="mt-2 text-neutral-700">{project.description}</p>
+            {/* Left side - Image with overlay */}
+            <div className="relative w-full md:w-1/4 md:mr-4 mb-3 md:mb-0 overflow-hidden rounded-md flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/0 to-indigo-600/0 group-hover:from-indigo-600/10 group-hover:to-indigo-600/20 transition-colors duration-300 z-10"></div>
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={200}
+                height={150}
+                className="w-full h-32 object-cover object-center rounded-md transition-all duration-500 group-hover:scale-110"
+              />
             </div>
+            
+            {/* Right side - Content */}
+            <div className="w-full md:w-3/4 flex flex-col">
+              <div className="flex justify-between items-start">
+                <motion.h2 
+                  className="text-lg font-semibold text-indigo-700 group-hover:text-indigo-800 transition-colors"
+                  whileHover={{ x: 3 }}
+                >
+                  {project.title}
+                </motion.h2>
+                <span className="text-xs px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">{project.date}</span>
+              </div>
+              <p className="text-neutral-600 text-xs mt-1 line-clamp-2">{project.description}</p>
+              
+              {/* View Details button */}
+              <div className="mt-2 self-end">
+                <motion.span 
+                  className="text-xs font-medium text-indigo-600 flex items-center group-hover:text-indigo-800 transition-colors"
+                  whileHover={{ x: 3 }}
+                >
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.span>
+              </div>
+            </div>
+            
+            {/* Card edge accent */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-indigo-100 group-hover:bg-indigo-500 transition-colors duration-300"></div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
+      
+      {/* Floating action button */}
+      <motion.div 
+        className="fixed bottom-8 right-8 z-50"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <motion.button 
+          className="bg-indigo-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
+          whileHover={{ scale: 1.1, backgroundColor: "#4338ca" }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

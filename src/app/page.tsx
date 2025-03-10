@@ -3,7 +3,7 @@ import HelloSection from "../components/sections/HelloSection";
 import Projects from "../components/sections/Projects";
 import AboutMe from "../components/sections/AboutMe";
 import Contact from "../components/sections/Contact";
-import Footer from "../components/footer"; // Import Footer
+import Footer from "../components/footer";
 import Head from "next/head";
 
 const Home = () => {
