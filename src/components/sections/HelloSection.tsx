@@ -32,10 +32,10 @@ const HelloSection = () => {
       transition={{ duration: 0.6 }}
     >
 
-      <div className="flex flex-col justify-center w-full max-w-screen-xl mx-auto px-4 relative z-10">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-screen-xl mx-auto px-4 relative z-10 gap-8">
         {/* Left Section */}
         <motion.div
-          className="text-section max-w-xl mt-8 sm:mt-0"
+          className="text-section max-w-xl w-full md:w-3/5"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -100,12 +100,12 @@ const HelloSection = () => {
 
         {/* Right Section - with refined image container design */}
         <motion.div
-          className="image-section absolute right-16 sm:right-16 md:right-24 lg:right-32 top-1 transform -translate-y-1/2"
+          className="w-full md:w-2/5 flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <div className="relative w-72 h-72 sm:w-72 sm:h-72">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
             {/* Subtle shadow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-blue-400 rounded-full shadow-xl opacity-60 blur-sm transform -translate-x-1 translate-y-1"></div>
             
@@ -120,8 +120,8 @@ const HelloSection = () => {
                 <Image
                   src="/imgs/Matt.png"
                   alt="Matthew Enarle"
-                  width={280}
-                  height={280}
+                  fill
+                  sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px"
                   className="object-cover object-center"
                   priority
                 />
