@@ -8,6 +8,15 @@ import Head from "next/head"; // Import Head for title
 const AboutPage = () => {
   const workExperiences = [
     {
+      icon: "☁️",
+      company: "AWS Cloud Trainee",
+      dates: ["April 2025", "Present"],
+      location: {
+        name: "eCloudvalley Philippines, Bago City",
+        icon: "🇵🇭",
+      },
+    },
+    {
       icon: "👨",
       company: "Software Engineer Trainee",
       dates: ["February 2025", "Present"],
@@ -122,7 +131,7 @@ const AboutPage = () => {
             SKILLS
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-sm text-neutral-700">
-            {["Android Development (Java)", "Dart", "Python", "JavaScript", "C++", "NodeJS", "NextJS", "Flutter", "Firebase", "Tensorflow"].map(
+            {["Android Development (Java)", "Dart", "Python", "JavaScript", "C++", "NodeJS", "NextJS", "Flutter", "Firebase", "Tensorflow", "AWS", "Serverless"].map(
               (skill) => (
                 <motion.div
                   key={skill}
@@ -157,7 +166,7 @@ const AboutPage = () => {
                     <span className="text-sm text-neutral-500">
                       {experience.dates.join(" - ")}
                     </span>
-                    <p className="text-sm text-neutral-600">
+                    <p className="text-sm font-bold text-neutral-500">
                       {experience.location.icon} {experience.location.name}
                     </p>
                   </div>
