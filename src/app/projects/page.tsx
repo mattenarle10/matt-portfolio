@@ -9,9 +9,16 @@ const ProjectsPage = () => {
 
   const projects = [
     {
+      title: "Anik.3D",
+      slug: "anik3d",
+      date: "April 2025",
+      description: "Anik.3D was created for the eCloudValley Serverless Workshop Internship. It’s a platform for purchasing high-quality 3D figurines, serving as both a customer-facing storefront and an admin management tool. 🏆 Won Best Group • 🥇 Awarded Top Cloud Intern.",
+      image: "/imgs/Projects_Anik.png",
+    },
+    {
       title: "SHEA-A (School Health Emergency Alert - Application)",
       slug: "shea-a",
-      date: "January 2025 - Ongoing",
+      date: "January 2025 - March 2025",
       description: "Developed a Flutter-based mobile app for school health emergencies with Firebase Authentication and Firestore for Real-time Database, equipped with Google Maps API for location tracking.",
       image: "/imgs/Projects_SHEA_A.png",
     
@@ -79,6 +86,7 @@ const ProjectsPage = () => {
       description: "Built a Google Sites-based community website integrated with Google My Maps for interactive features.",
       image: "/imgs/Projects_Mandalagan.png",
     },
+ 
   ];
 
   return (

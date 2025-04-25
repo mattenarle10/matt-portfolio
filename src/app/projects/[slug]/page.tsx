@@ -13,7 +13,9 @@ interface Project {
   image: string;
   github?: string | string[];
   demo?: string;
+  manual?: string;
   pdf?: string;
+  technologies: string[];
 }
 
 // Assuming you have an array of projects
@@ -21,11 +23,11 @@ const projectData: Project[] = [
   {
     title: "SHEA-A (School Health Emergency Alert - Application)",
     slug: "shea-a",
-    date: "January 2025 - Ongoing",
+    date: "January 2025 - March 2025",
     description: "Developed a Flutter-based mobile app for school health emergencies with Firebase Authentication and Firestore for Real-time Database, equipped with Google Maps API for location tracking.",
     image: "/imgs/Projects_SHEA_A.png",
     github: "https://github.com/mattenarle10/SHEA-A",
-  
+    technologies: ["Flutter", "Firebase", "Google Maps API"]
   },
   {
     title: "Road Eye (AI-Driven Road Damage Detection)",
@@ -35,7 +37,8 @@ const projectData: Project[] = [
     image: "/imgs/Projects_RoadEye.png",
     github: "https://github.com/mattenarle10/roadeye",
     demo: "https://colab.research.google.com/drive/1zdKmjmkxz1W3QuRaQCJV5rVl1WHJbVD2",
-    pdf: "/roadeye.pdf", // PDF link for Road Eye project
+    pdf: "/roadeye.pdf",
+    technologies: ["Python", "AI"]
   },
   {
     title: "Reserba",
@@ -47,6 +50,7 @@ const projectData: Project[] = [
         "https://github.com/mattenarle10/reserba-web",
         "https://github.com/mattenarle10/reserba-mobile"
       ],
+    technologies: ["MySQL", "PHP", "Flutter", "HTML", "CSS"]
   },
   {
     title: "Elderly Digital Steps",
@@ -58,6 +62,7 @@ const projectData: Project[] = [
         "https://github.com/mattenarle10/eds-admin",
         "https://github.com/mattenarle10/eds-mobile"
       ],
+    technologies: ["MySQL", "PHP", "Flutter", "HTML", "CSS"]
   },
   {
     title: "NeuroWarn BCI (Thesis)",
@@ -65,6 +70,7 @@ const projectData: Project[] = [
     date: "January - December 2024",
     description: "Enhanced safety in EEG-controlled wheelchairs using RNN for smart warning systems.",
     image: "/imgs/Projects_Neurowarn.png",
+    technologies: ["RNN", "AI", "EEG"]
   },
   {
     title: "Off the Grid",
@@ -73,6 +79,7 @@ const projectData: Project[] = [
     description: "Hike tracking app for mountaineers, leveraging Google Maps API and Firebase.",
     image: "/imgs/Projects_OTG.png",
     github: "https://github.com/mattenarle10/offthegrid",
+    technologies: ["Google Maps API", "Firebase", "Java"]
   },
   {
     title: "Senyas",
@@ -81,7 +88,7 @@ const projectData: Project[] = [
     description: "Centralized disaster response system integrating sensors, Wi-Fi modules, and mobile app notifications.",
     image: "/imgs/Projects_Senyas.png",
     github: "https://github.com/mattenarle10/senyas",
-   
+    technologies: ["Java", "Firebase"]
   },
   {
     title: "EzPark",
@@ -90,6 +97,7 @@ const projectData: Project[] = [
     description: "Developed a Flutter-based parking reservation app for the Lasalle area, utilizing Hive as the database.",
     image: "/imgs/Projects_Ezpark.png",
     github: "https://github.com/mattenarle10/EzPark",
+    technologies: ["Flutter"]
   },
   {
     title: "Dr. Rodolfo T. Blancia Infirmary",
@@ -98,6 +106,7 @@ const projectData: Project[] = [
     description: "Designed a Google Sites website showcasing hospital information and services based in Kabankalan City.",
     image: "/imgs/Projects_Rodolfo.png",
     demo: "https://sites.google.com/view/drrodolfotblanciainfirmary/home",
+    technologies: ["HTML"]
   },
   {
     title: "Brgy. Mandalagan - Community Website",
@@ -106,6 +115,18 @@ const projectData: Project[] = [
     description: "Built a Google Sites-based community website integrated with Google My Maps for interactive features.",
     image: "/imgs/Projects_Mandalagan.png",
     demo: " https://sites.google.com/view/brgymandalaganmdrc/home",
+    technologies: ["HTML", "Google Maps API"]
+  },
+  {
+    title: "Anik.3D",
+    slug: "anik3d",
+    date: "April 2025",
+    description: "Anik.3D was created for the eCloudValley Serverless Workshop Internship. It’s a platform for purchasing high-quality 3D figurines, serving as both a customer-facing storefront and an admin management tool.\n\n Won Best Group • Awarded Top Cloud Intern.",
+    image: "/imgs/Projects_Anik.png",
+    demo: "https://main.dpzbu1pkrairq.amplifyapp.com/",
+    manual: "https://anik3d-manual.vercel.app/main",
+    github: "https://github.com/mattenarle10/anik.3d",
+    technologies: ["Next.js", "AWS Amplify", "S3", "DynamoDB", "Three.js"]
   },
 ];
 
@@ -192,6 +213,12 @@ const ProjectPage = ({ params }: { params: Promise<{ slug: string }> }) => {
             Demo
           </a>
         )}
+        {project.manual && (
+          <a href={project.manual} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800">
+            <FaLink className="mr-2" />
+            Manual
+          </a>
+        )}
         {project.pdf && (
           <a href={project.pdf} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800">
             <FaLink className="mr-2" />
@@ -214,6 +241,22 @@ const ProjectPage = ({ params }: { params: Promise<{ slug: string }> }) => {
         <h2 className="text-3xl font-semibold text-indigo-700 mb-6">Description</h2> {/* Added bottom margin to header */}
         <p className="text-neutral-700">{project.description}</p>
       </section>
+
+      {/* Tech Stack Section */}
+      {project.technologies && (
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-indigo-700 mb-4">Tech Stack</h2>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech, idx) => (
+              <span key={idx} className="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+     
     </div>
   );
 };

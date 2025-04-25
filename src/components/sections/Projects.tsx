@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaDatabase, FaPhp, FaHtml5, FaCss3Alt, FaJava, FaAndroid, FaPython, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
+import { FaDatabase, FaPhp, FaHtml5, FaCss3Alt, FaJava, FaAndroid, FaPython, FaMapMarkerAlt, FaArrowRight, FaReact, FaAws, FaCube } from "react-icons/fa";
 import { JSX } from "react";
 import { SiFlutter, SiFirebase, SiTensorflow } from "react-icons/si";
 
-type TechKey = 'MySQL' | 'PHP' | 'Flutter' | 'HTML' | 'CSS' | 'RNN' | 'AI' | 'EEG' | 'Google Maps API' | 'Firebase' | 'Java';
+type TechKey = 'MySQL' | 'PHP' | 'Flutter' | 'HTML' | 'CSS' | 'RNN' | 'AI' | 'EEG' | 'Google Maps API' | 'Firebase' | 'Java' | 'Next.js' | 'AWS Amplify' | 'S3' | 'DynamoDB' | 'Three.js';
 
 const iconMapping: Record<TechKey, JSX.Element> = {
   MySQL: <FaDatabase className="text-blue-500" />,
@@ -22,6 +22,11 @@ const iconMapping: Record<TechKey, JSX.Element> = {
   "Google Maps API": <FaMapMarkerAlt className="text-red-500" />,
   Firebase: <SiFirebase className="text-yellow-500" />,
   Java: <FaJava className="text-red-500" />,
+  "Next.js": <FaReact className="text-black" />,
+  "AWS Amplify": <FaAws className="text-orange-600" />,
+  "S3": <FaAws className="text-yellow-700" />,
+  "DynamoDB": <FaDatabase className="text-blue-700" />,
+  "Three.js": <FaCube className="text-gray-800" />,
 };
 
 const Projects = () => {
@@ -42,6 +47,15 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: "Anik.3D",
+      date: "Apr 2025",
+      description:
+        "A Cloud-Native App that serves as an ecommerce platform for purchasing high-quality 3D Aniks.",
+      image: "/imgs/Projects_Anik.png",
+      path: "/projects/anik3d",
+      technologies: ["Next.js", "AWS Amplify", "S3", "DynamoDB", "Three.js"] as TechKey[],
+    },
+    {
       title: "Reserba",
       date: "Oct - Dec 2024",
       description: "Platform for food stall reservation and management.",
@@ -49,14 +63,7 @@ const Projects = () => {
       path: "/projects/reserba",
       technologies: ["MySQL", "PHP", "Flutter", "HTML", "CSS"] as TechKey[],
     },
-    {
-      title: "Elderly Digital Steps",
-      date: "Oct - Dec 2024",
-      description: "Learning platform with booking, modules, and quizzes.",
-      image: "/imgs/Projects_EDS.png",
-      path: "/projects/elderly-digital-steps",
-      technologies: ["MySQL", "PHP", "Flutter", "HTML", "CSS"] as TechKey[],
-    },
+
     {
       title: "NeuroWarn BCI (Thesis)",
       date: "Jan - Dec 2024",
@@ -73,6 +80,7 @@ const Projects = () => {
       path: "/projects/off-the-grid",
       technologies: ["Google Maps API", "Firebase", "Java"] as TechKey[],
     },
+ 
   ];
 
   // If not client-side yet, return a placeholder to prevent hydration errors

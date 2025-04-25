@@ -48,7 +48,7 @@ const AboutMe = () => {
           >
             <div className="relative w-full max-w-sm md:max-w-md shadow-lg overflow-hidden group border-4 border-white rounded-xl">
               <Image
-                src="/imgs/me.jpg"
+                src="/imgs/Me-About.png"
                 alt="Matthew Ariel A. Enarle"
                 width={400}
                 height={400}
