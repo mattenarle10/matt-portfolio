@@ -12,7 +12,7 @@ const AboutPage = () => {
       company: "AWS Cloud Trainee",
       dates: ["April 2025", "Present"],
       location: {
-        name: "eCloudvalley Philippines, Bago City",
+        name: "eCloudvalley Philippines, Remote",
         icon: "🇵🇭",
       },
     },
@@ -131,7 +131,7 @@ const AboutPage = () => {
             SKILLS
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-sm text-neutral-700">
-            {["Android Development (Java)", "Dart", "Python", "JavaScript", "C++", "NodeJS", "NextJS", "Flutter", "Firebase", "Tensorflow", "AWS", "Serverless"].map(
+            {["Android Development (Java)", "Dart", "Python", "JavaScript", "C++", "ReactJS", "NextJS", "Flutter", "Firebase", "Tensorflow", "AWS", "Serverless"].map(
               (skill) => (
                 <motion.div
                   key={skill}
@@ -185,7 +185,7 @@ const AboutPage = () => {
             <div className="flex items-center gap-3"><span className="text-xl">🎓</span> <span className="font-medium">West Visayas State University</span> (2021 - Present)</div>
             <div className="flex items-center gap-3"><span className="text-xl">💚</span> <span className="font-medium">University of St. Lasalle</span> (2008 - 2020)</div>
             <div className="flex items-center gap-3"><span className="text-xl">📜</span> <span className="font-medium">BS in Computer Science</span> (Major in AI)</div>
-            <div className="flex items-center gap-3"><span className="text-xl">🏆</span> <span className="font-medium">GWA: 1.37</span> (Magna Cum Laude Expected)</div>
+            <div className="flex items-center gap-3"><span className="text-xl">🏆</span> <span className="font-medium">GWA: 1.34</span> (Magna Cum Laude Expected)</div>
             <div className="flex items-center gap-3"><span className="text-xl">📚</span> <span className="font-medium">Thesis:</span> NeuroWarn BCI</div>
           </div>
         </motion.div>
