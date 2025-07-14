@@ -55,7 +55,7 @@ const HelloSection = () => {
                   className="w-full h-full relative overflow-hidden"
                 >
                   <Image
-                    src="/imgs/Matt.png"
+                    src="/imgs/Matt.jpg"
                     alt="Matthew Enarle"
                     fill
                     sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, 320px"

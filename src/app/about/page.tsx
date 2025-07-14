@@ -75,7 +75,7 @@ const AboutPage = () => {
         >
           <div className="relative w-64 h-64 mx-auto rounded-full shadow-xl overflow-hidden border-4 border-white">
             <Image
-              src="/imgs/Matt.png"
+              src="/imgs/Matt.jpg"
               alt="Matthew Ariel A. Enarle"
               width={256}
               height={256}
