@@ -9,8 +9,17 @@ const AboutPage = () => {
   const workExperiences = [
     {
       icon: "☁️",
+      company: "Junior Cloud Engineer",
+      dates: ["July 2025", "Present"],
+      location: {
+        name: "eCloudvalley Philippines, Hybrid",
+        icon: "🇵🇭",
+      },
+    },
+    {
+      icon: "☁️",
       company: "AWS Cloud Trainee",
-      dates: ["April 2025", "Present"],
+      dates: ["April 2025", "May 2025"],
       location: {
         name: "eCloudvalley Philippines, Remote",
         icon: "🇵🇭",
@@ -25,15 +34,7 @@ const AboutPage = () => {
         icon: "🇵🇭",
       },
     },
-    {
-      icon: "👨‍💻",
-      company: "Research Programmer & Consultant",
-      dates: ["May 2024", "Present"],
-      location: {
-        name: "Sagay National High School, Negros Occidental",
-        icon: "🇵🇭",
-      },
-    },
+
     {
       icon: "💼",
       company: "Freelance Software Developer",
@@ -181,12 +182,69 @@ const AboutPage = () => {
           <h2 className="text-2xl font-semibold text-indigo-600 mb-4 text-center">
             EDUCATION
           </h2>
-          <div className="space-y-4 text-sm md:text-base text-neutral-700 bg-neutral-50 p-5 rounded-xl shadow-sm border border-neutral-100">
-            <div className="flex items-center gap-3"><span className="text-xl">🎓</span> <span className="font-medium">West Visayas State University</span> (2021 - Present)</div>
-            <div className="flex items-center gap-3"><span className="text-xl">💚</span> <span className="font-medium">University of St. Lasalle</span> (2008 - 2020)</div>
-            <div className="flex items-center gap-3"><span className="text-xl">📜</span> <span className="font-medium">BS in Computer Science</span> (Major in AI)</div>
-            <div className="flex items-center gap-3"><span className="text-xl">🏆</span> <span className="font-medium">GWA: 1.34</span> (Magna Cum Laude Expected)</div>
-            <div className="flex items-center gap-3"><span className="text-xl">📚</span> <span className="font-medium">Thesis:</span> NeuroWarn BCI</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* MBA Education */}
+            <motion.div
+              className="p-5 bg-neutral-50 rounded-lg shadow-md border border-neutral-100 hover:shadow-lg hover:scale-105 transition-all"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-3xl mt-1">🎓</div>
+                <div className="space-y-2">
+                  <div>
+                    <h3 className="font-bold text-indigo-700">Master in Business Administration</h3>
+                    <p className="text-sm text-neutral-500">2025 - Present</p>
+                  </div>
+                  <div className="pt-2">
+                    <p className="font-medium text-neutral-800">University of St. Lasalle</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* BS Computer Science */}
+            <motion.div
+              className="p-5 bg-neutral-50 rounded-lg shadow-md border border-neutral-100 hover:shadow-lg hover:scale-105 transition-all"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-3xl mt-1">💻</div>
+                <div className="space-y-2">
+                  <div>
+                    <h3 className="font-bold text-indigo-700">BS in Computer Science</h3>
+                    <p className="text-sm text-neutral-500">2021 - 2025</p>
+                  </div>
+                  <div className="pt-2">
+                    <p className="font-medium text-neutral-800">West Visayas State University</p>
+                    <p className="text-sm text-neutral-600">🤖 Major in Artificial Intelligence</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-xl">🏆</span>
+                      <span className="text-sm font-medium text-indigo-600">Magna Cum Laude (GWA: 1.34)</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-xl">📚</span>
+                      <span className="text-sm font-medium">Thesis: NeuroWarn BCI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Primary & Secondary Education */}
+            <motion.div
+              className="p-5 bg-neutral-50 rounded-lg shadow-md border border-neutral-100 hover:shadow-lg hover:scale-105 transition-all sm:col-span-2"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-3xl mt-1">💚</div>
+                <div>
+                  <h3 className="font-bold text-indigo-700">Primary & Secondary Education</h3>
+                  <p className="text-sm text-neutral-500">2008 - 2020</p>
+                  <p className="font-medium text-neutral-800 mt-2">University of St. Lasalle</p>
+                  <p className="text-sm text-neutral-600 mt-1">Graduated with High Honors</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>
